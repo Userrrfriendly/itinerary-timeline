@@ -5,7 +5,8 @@ import {
   Typography,
   CircularProgress,
 } from "@material-ui/core/";
-import { MOCKDATA } from "../../data/mockData";
+import { MOCKDATA } from "../../data/mockServerData";
+import { airportCodeToName } from "../../helpers/helpers";
 import SegmentFilter from "../../components/SegmentFilter/SegmentFilter";
 
 const useStyles = makeStyles(theme => ({
@@ -28,15 +29,20 @@ export default function Itinerary() {
 
   const [loading, setLoading] = useState(true);
   const [segments, setSegments] = useState([]);
+  const [origin, setOrigin] = useState(null);
+  const [destination, setDestination] = useState(null);
 
   useEffect(() => {
     /**Mocks an API call when component mounts */
     setTimeout(() => {
-      setLoading(false);
       setSegments(MOCKDATA.segments);
+      setOrigin(MOCKDATA.origin_iata);
+      setDestination(MOCKDATA.destination_iata);
+      setLoading(false);
     }, Math.random() * 1500);
   }, []);
 
+  console.log(origin, destination);
   /**
    * ✔️Load DATA On Mount
    ** ✔️Show Spinner when the DATA loads
@@ -58,7 +64,7 @@ export default function Itinerary() {
           <>
             <div>
               <Typography variant='h4' component='h1' gutterBottom>
-                Athens - Thessaloniki
+                {airportCodeToName(origin)} - {airportCodeToName(destination)}
               </Typography>
             </div>
 
