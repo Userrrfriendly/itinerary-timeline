@@ -23,7 +23,6 @@ export default function GroundSegment(props) {
       <Paper className={classes.root}>
         <CarIcon fontSize='large' style={{ margin: "0 0.25rem" }} />
         <Typography
-          // noWrap='false'
           variant='subtitle1'
           component='p'
           className={classes.cardText}>

@@ -1,3 +1,3 @@
-export const getTimeHours = timeStamp => {
+export const timeStampToLocalTime = timeStamp => {
   return new Date(timeStamp).toLocaleTimeString("en-US");
 };

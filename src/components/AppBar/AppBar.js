@@ -7,6 +7,7 @@ import {
   makeStyles,
 } from "@material-ui/core/";
 import { ChevronLeft as BackIcon } from "@material-ui/icons/";
+import { DARKBLUE } from "../../helpers/colors";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   toolbar: {
-    backgroundColor: "#00008b",
+    backgroundColor: DARKBLUE,
   },
 }));
 

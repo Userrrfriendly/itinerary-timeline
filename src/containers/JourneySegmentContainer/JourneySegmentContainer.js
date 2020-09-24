@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles, Typography } from "@material-ui/core/";
-import { getTimeHours } from "../../helpers/helpers";
+import { timeStampToLocalTime } from "../../helpers/helpers";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,10 +27,7 @@ const useStyles = makeStyles(theme => ({
     height: "1rem",
     backgroundColor: "#000",
   },
-  left: {
-    height: "100%",
-    width: "20%",
-  },
+
   progress: {
     width: "2px",
     minHeight: "50px",
@@ -50,28 +47,6 @@ const useStyles = makeStyles(theme => ({
   cardBottomRight: {
     width: "80%",
   },
-  right: {
-    display: "flex",
-    flexDirection: "column",
-    width: "80%",
-    height: "100%",
-  },
-  top: {
-    height: "20%",
-    textAlign: "left",
-    paddingLeft: "0.5rem",
-  },
-  bottom: {
-    backgroundColor: "purple",
-    flexGrow: 1,
-  },
-  paper: {
-    width: "100%",
-    backgroundColor: "#d3d3d3",
-    minHeight: "100px",
-    minWidth: "200px",
-    display: "flex",
-  },
 }));
 
 export default function JourneySegmentContainer(props) {
@@ -85,7 +60,7 @@ export default function JourneySegmentContainer(props) {
         </div>
         <div className={classes.cardTopRight}>
           <Typography variant='body1' component='p' align='left'>
-            {getTimeHours(props.departure)}
+            {timeStampToLocalTime(props.departure)}
           </Typography>
         </div>
       </section>

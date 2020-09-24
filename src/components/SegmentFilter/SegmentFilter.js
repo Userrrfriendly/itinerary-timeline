@@ -4,7 +4,6 @@ import AirportSegment from "../AirportSegment/AirportSegment";
 import FlightSegment from "../FlightSegment/FlightSegment";
 
 export default function SegmentFilter(props) {
-  // console.log(props);
   switch (props.type) {
     case "GROUND":
       return <GroundSegment {...props} />;
@@ -15,7 +14,8 @@ export default function SegmentFilter(props) {
     default:
       return (
         <h5>
-          ...oops something went wrong with this segment
+          ...oops something went wrong, segment "{props.type}" doesn't
+          correspond to a component
           <span role='img' aria-label=''>
             🥵
           </span>

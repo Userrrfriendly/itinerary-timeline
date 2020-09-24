@@ -30,18 +30,18 @@ export default function Itinerary() {
   const [segments, setSegments] = useState([]);
 
   useEffect(() => {
-    //mock API call
+    /**Mocks an API call when component mounts */
     setTimeout(() => {
-      console.log(MOCKDATA);
       setLoading(false);
       setSegments(MOCKDATA.segments);
     }, Math.random() * 1500);
   }, []);
 
   /**
-   * ✔️Load DATA On Mount✔
+   * ✔️Load DATA On Mount
    ** ✔️Show Spinner when the DATA loads
    * ✔️Iterate through Segments
+   * ✔️ saves response to state
    * ✔️Map through Segments and spit out JourneySegments based on segment TYPE(ground/airport/Flight)
    ** first one needs to know that it is the first one So it gets the dark dot at ProgressBar
    *

@@ -3,7 +3,7 @@ import { Paper, makeStyles, Typography } from "@material-ui/core";
 import { FlightTakeoff as FlightIcon } from "@material-ui/icons";
 import JourneySegment from "../../containers/JourneySegmentContainer/JourneySegmentContainer";
 import { DARKBLUE } from "../../helpers/colors";
-import { getTimeHours } from "../../helpers/helpers";
+import { timeStampToLocalTime } from "../../helpers/helpers";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     lineHeight: 1,
     marginTop: "0.25rem",
   },
-  cardTop: {
+  cardTopBottom: {
     display: "flex",
     justifyContent: "space-between",
     backgroundColor: DARKBLUE,
@@ -27,7 +27,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
   },
   delay: {
-    // border: "1px solid darkgreen",
     backgroundColor: "green",
   },
 }));
@@ -38,7 +37,7 @@ export default function FlightSegment(props) {
   return (
     <JourneySegment departure={props.departure}>
       <Paper className={classes.root}>
-        <div className={classes.cardTop}>
+        <div className={classes.cardTopBottom}>
           <Typography
             variant='subtitle1'
             component='p'
@@ -49,7 +48,7 @@ export default function FlightSegment(props) {
             variant='subtitle1'
             component='p'
             className={classes.cardText}>
-            Boarding: {getTimeHours(props.detail.boarding)}
+            Boarding: {timeStampToLocalTime(props.detail.boarding)}
           </Typography>
         </div>
         <div className={classes.cardCenter}>
@@ -68,7 +67,7 @@ export default function FlightSegment(props) {
           </Typography>
         </div>
 
-        <div className={classes.cardTop}>
+        <div className={classes.cardTopBottom}>
           <Typography
             variant='subtitle1'
             component='p'
