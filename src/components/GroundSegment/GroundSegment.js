@@ -2,7 +2,6 @@ import React from "react";
 import { Paper, makeStyles, Typography } from "@material-ui/core";
 import { DriveEta as CarIcon } from "@material-ui/icons";
 import JourneySegment from "../../containers/JourneySegmentContainer/JourneySegmentContainer";
-import { DARKBLUE } from "../../helpers/colors";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,9 +18,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function GroundSegment(props) {
   const classes = useStyles();
-
   return (
-    <JourneySegment>
+    <JourneySegment departure={props.departure}>
       <Paper className={classes.root}>
         <CarIcon fontSize='large' style={{ margin: "0 0.25rem" }} />
         <Typography
@@ -29,7 +27,7 @@ export default function GroundSegment(props) {
           variant='subtitle1'
           component='p'
           className={classes.cardText}>
-          Pick up from <strong>{props.address}</strong>
+          Pick up from <strong>{props.origin.value}</strong>
         </Typography>
       </Paper>
     </JourneySegment>

@@ -1,8 +1,9 @@
 import React from "react";
-import { Paper, makeStyles, Typography, Chip } from "@material-ui/core";
+import { Paper, makeStyles, Typography } from "@material-ui/core";
 import { FlightTakeoff as FlightIcon } from "@material-ui/icons";
 import JourneySegment from "../../containers/JourneySegmentContainer/JourneySegmentContainer";
 import { DARKBLUE } from "../../helpers/colors";
+import { getTimeHours } from "../../helpers/helpers";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,26 +26,30 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
   },
+  delay: {
+    // border: "1px solid darkgreen",
+    backgroundColor: "green",
+  },
 }));
 
 export default function FlightSegment(props) {
   const classes = useStyles();
 
   return (
-    <JourneySegment>
+    <JourneySegment departure={props.departure}>
       <Paper className={classes.root}>
         <div className={classes.cardTop}>
           <Typography
             variant='subtitle1'
             component='p'
             className={classes.cardText}>
-            A123
+            {props.detail.flight_number}
           </Typography>
           <Typography
             variant='subtitle1'
             component='p'
             className={classes.cardText}>
-            boarding: 8:30
+            Boarding: {getTimeHours(props.detail.boarding)}
           </Typography>
         </div>
         <div className={classes.cardCenter}>
@@ -52,14 +57,14 @@ export default function FlightSegment(props) {
             variant='subtitle1'
             component='p'
             className={classes.cardText}>
-            Auth
+            {props.origin.value}
           </Typography>
           <FlightIcon fontSize='large' style={{ margin: "0 0.25rem" }} />
           <Typography
             variant='subtitle1'
             component='p'
             className={classes.cardText}>
-            SKG
+            {props.destination.value}
           </Typography>
         </div>
 
@@ -68,21 +73,22 @@ export default function FlightSegment(props) {
             variant='subtitle1'
             component='p'
             className={classes.cardText}>
-            Gate13
+            {props.detail.gate}
           </Typography>
           <Typography
             variant='subtitle1'
             component='p'
             className={classes.cardText}>
-            Seat 12
+            {props.detail.seat}
           </Typography>
-          <Typography
-            variant='subtitle1'
-            component='p'
-            style={{ border: "1px solid darkgreen", backgroundColor: "green" }}
-            className={classes.cardText}>
-            On Time
-          </Typography>
+          <div className={classes.delay}>
+            <Typography
+              variant='subtitle1'
+              component='p'
+              className={classes.cardText}>
+              On Time
+            </Typography>
+          </div>
         </div>
       </Paper>
     </JourneySegment>
