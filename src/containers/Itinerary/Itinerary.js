@@ -6,7 +6,7 @@ import {
   CircularProgress,
 } from "@material-ui/core/";
 import { MOCKDATA } from "../../data/mockServerData";
-import { airportCodeToName } from "../../helpers/helpers";
+import { airportCodeToLocalName } from "../../helpers/helpers";
 import SegmentFilter from "../../components/SegmentFilter/SegmentFilter";
 
 const useStyles = makeStyles(theme => ({
@@ -42,7 +42,6 @@ export default function Itinerary() {
     }, Math.random() * 1500);
   }, []);
 
-  console.log(origin, destination);
   /**
    * ✔️Load DATA On Mount
    ** ✔️Show Spinner when the DATA loads
@@ -64,7 +63,8 @@ export default function Itinerary() {
           <>
             <div>
               <Typography variant='h4' component='h1' gutterBottom>
-                {airportCodeToName(origin)} - {airportCodeToName(destination)}
+                {airportCodeToLocalName(origin)} -{" "}
+                {airportCodeToLocalName(destination)}
               </Typography>
             </div>
 

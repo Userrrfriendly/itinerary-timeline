@@ -1,7 +1,7 @@
 import React from "react";
 import { Paper, makeStyles, Typography } from "@material-ui/core";
 import { FlightTakeoff as FlightIcon } from "@material-ui/icons";
-import JourneySegment from "../../containers/JourneySegmentContainer/JourneySegmentContainer";
+import JourneySegmentContainer from "../../containers/JourneySegmentContainer/JourneySegmentContainer";
 import { DARKBLUE } from "../../helpers/colors";
 import { timeStampToLocalTime } from "../../helpers/helpers";
 
@@ -35,7 +35,7 @@ export default function FlightSegment(props) {
   const classes = useStyles();
 
   return (
-    <JourneySegment departure={props.departure}>
+    <JourneySegmentContainer departure={props.departure}>
       <Paper className={classes.root}>
         <div className={classes.cardTopBottom}>
           <Typography
@@ -90,6 +90,6 @@ export default function FlightSegment(props) {
           </div>
         </div>
       </Paper>
-    </JourneySegment>
+    </JourneySegmentContainer>
   );
 }

@@ -31,6 +31,7 @@ export const MOCKDATA = {
       departure: 1588827600,
       detail: {
         busyness_index: 10,
+        terminal: "C",
       },
     },
     {

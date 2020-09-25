@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import AppBar from "./components/AppBar/AppBar";
 import Itinerary from "./containers/Itinerary/Itinerary";
 

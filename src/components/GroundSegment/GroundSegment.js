@@ -1,7 +1,7 @@
 import React from "react";
 import { Paper, makeStyles, Typography } from "@material-ui/core";
 import { DriveEta as CarIcon } from "@material-ui/icons";
-import JourneySegment from "../../containers/JourneySegmentContainer/JourneySegmentContainer";
+import JourneySegmentContainer from "../../containers/JourneySegmentContainer/JourneySegmentContainer";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 export default function GroundSegment(props) {
   const classes = useStyles();
   return (
-    <JourneySegment departure={props.departure}>
+    <JourneySegmentContainer departure={props.departure}>
       <Paper className={classes.root}>
         <CarIcon fontSize='large' style={{ margin: "0 0.25rem" }} />
         <Typography
@@ -29,6 +29,6 @@ export default function GroundSegment(props) {
           Pick up from <strong>{props.origin.value}</strong>
         </Typography>
       </Paper>
-    </JourneySegment>
+    </JourneySegmentContainer>
   );
 }
