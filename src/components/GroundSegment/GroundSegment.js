@@ -29,7 +29,7 @@ export default function GroundSegment(props) {
       <Paper className={classes.root}>
         <CarIcon fontSize='large' className={classes.icon} />
         <Typography
-          gutterBottom='true'
+          gutterBottom
           variant='subtitle1'
           component='p'
           className={classes.cardText}>

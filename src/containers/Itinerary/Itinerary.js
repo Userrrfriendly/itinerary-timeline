@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import {
   Paper,
   makeStyles,
@@ -24,39 +24,65 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const initialState = {
+  itinerary_id: null,
+  first_name: null,
+  middle_name: null,
+  last_name: null,
+  origin: null,
+  destination: null,
+  segments: [],
+  loading: true,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "reset":
+      return { ...initialState };
+    case "loadData":
+      return {
+        ...state,
+        itinerary_id: action.payload.itinerary_id,
+        first_name: action.payload.traveler.first_name,
+        middle_name: action.payload.traveler.middle_name,
+        last_name: action.payload.traveler.last_name,
+        origin: action.payload.origin_iata,
+        destination: action.payload.destination_iata,
+        segments: action.payload.segments,
+        loading: false,
+      };
+    default:
+      throw new Error();
+  }
+}
+
 export default function Itinerary() {
   const classes = useStyles();
 
-  const [loading, setLoading] = useState(true);
-  const [segments, setSegments] = useState([]);
-  const [origin, setOrigin] = useState(null);
-  const [destination, setDestination] = useState(null);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     /**Mocks an API call when component mounts */
     setTimeout(() => {
-      setSegments(MOCKDATA.segments);
-      setOrigin(MOCKDATA.origin_iata);
-      setDestination(MOCKDATA.destination_iata);
-      setLoading(false);
+      dispatch({ type: "loadData", payload: MOCKDATA });
     }, Math.random() * 1500);
   }, []);
 
   return (
     <div className={classes.root}>
       <Paper square elevation={0} className={classes.paper}>
-        {loading ? (
+        {state.loading ? (
           <CircularProgress className={classes.spinner} />
         ) : (
           <>
             <div>
               <Typography variant='h4' component='h1' gutterBottom>
-                {airportCodeToLocalName(origin)} -{" "}
-                {airportCodeToLocalName(destination)}
+                {airportCodeToLocalName(state.origin)} -{" "}
+                {airportCodeToLocalName(state.destination)}
               </Typography>
             </div>
 
-            {segments.map(segment => (
+            {state.segments.map(segment => (
               <SegmentFilter {...segment} key={segment.segment_id} />
             ))}
           </>
