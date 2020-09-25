@@ -23,17 +23,17 @@ const useStyles = makeStyles(theme => ({
   },
   bullet: {
     borderRadius: "100%",
-    width: "1rem",
-    height: "1rem",
+    width: "0.75rem",
+    height: "0.75rem",
     backgroundColor: "#000",
+    marginTop: "0.4rem",
   },
-
   progress: {
     width: "2px",
     minHeight: "50px",
     height: "100%",
     backgroundColor: "black",
-    marginLeft: "0.4rem",
+    marginLeft: "0.35rem",
     borderRadius: "1rem",
   },
   cardBottom: {

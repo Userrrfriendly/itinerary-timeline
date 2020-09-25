@@ -3,12 +3,12 @@ import { Paper, makeStyles, Typography } from "@material-ui/core";
 import { LocalAirport as AirportIcon } from "@material-ui/icons";
 import JourneySegmentContainer from "../../containers/JourneySegmentContainer/JourneySegmentContainer";
 import { terminalBusinessLevel } from "../../helpers/helpers";
-
+import { LIGHTBLUE } from "../../helpers/colors";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
     height: "100%",
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: LIGHTBLUE,
     display: "flex",
   },
   textContainer: {

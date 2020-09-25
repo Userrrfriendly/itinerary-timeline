@@ -42,18 +42,6 @@ export default function Itinerary() {
     }, Math.random() * 1500);
   }, []);
 
-  /**
-   * ✔️Load DATA On Mount
-   ** ✔️Show Spinner when the DATA loads
-   * ✔️Iterate through Segments
-   * ✔️ saves response to state
-   * ✔️Map through Segments and spit out JourneySegments based on segment TYPE(ground/airport/Flight)
-   ** first one needs to know that it is the first one So it gets the dark dot at ProgressBar
-   *
-   ** Error Handling?
-   ** Should I create a map for airport names -> airport code?
-   */
-
   return (
     <div className={classes.root}>
       <Paper square elevation={0} className={classes.paper}>
